@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{margin:0;padding:0;}
+        #box{
+            margin:10%;
+            min-width:810px;
+            max-width:1000px;
+            padding:20px;
+        }
+        #box div{
+            width:80px;
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            float:left;
+            margin-left:10px;
+            color:#fff;
+            background: #ffa822;
+            -webkit-border-radius:5px;
+            -moz-border-radius:5px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+        #box div:hover{
+            background: #e24bff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById("box");
+        var num = 1;
+            for(i=1;i<=9;i++){
+                for(j=1;j<=i;j++){
+                    //document.write(i+"x"+j+"="+i*j+'  ');
+                    oBox.innerHTML += "<div class='div"+num+"'>"+j+"x"+i+"="+i*j+"</div>";
+                }
+                oBox.innerHTML += '</br></br>';
+            }
+//        oBox.innerHTML += '<div class="div'+num+'"></div>';
+//        oBox.innerHTML += '</br></br>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '</br></br>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '</br></br>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+//        oBox.innerHTML += '<div class="div'+i+'"></div>';
+    </script>
+</body>
+</html>

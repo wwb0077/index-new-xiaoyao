@@ -1,0 +1,33 @@
+@charset 'UTF-8';
+body,h1,h2,h3,h4,h5,h6,p,dd{margin:0;}
+ul,ol,dl{margin:0;padding:0;list-style:none;}
+img{border:none;}
+a{text-decoration:none;color:#000;}
+
+/*** font-size ***/
+.f-siz12{font-size:12px;}
+.f-siz14{font-size:14px;}
+.f-siz16{font-size:16px;}
+.f-siz18{font-size:18px;}
+.f-siz20{font-size:20px;}
+.f-siz22{font-size:22px;}
+.f-siz24{font-size:24px;}
+
+/*** float ***/
+.fl-L{float:left;}
+.fl-R{float:right;}
+
+.clearfix{zoom:1;}/* for IE*/
+.clearfix:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+/*** text-align ***/
+.t-a-L{text-align:left;}
+.t-a-R{text-align:right;}
+.t-a-C{text-align:center;}
+/*** position***/
+.pos-r{position:relative;}
+.pos-a{position:absolute;}
+.pos-f{position:fixed;}

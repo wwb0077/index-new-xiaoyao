@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{width:418px;height:300px;margin:50px auto;}
+        #bar{overflow:hidden;}
+        #bar p{
+            float:left;
+            width:70px;
+            height:30px;
+            background:#ddd;
+            font-size:12px;
+            text-align:center;
+            line-height:30px;
+            color:white;
+            margin-right:10px;
+            cursor:pointer;
+        }
+        #bar p.xiaoyao{
+            background:#ff6600;
+        }
+        #wrap{
+            position:relative;
+            width:418px;
+            height:196px;
+            margin-top:25px;
+            background:red;
+        }
+        #wrap .pic{
+            position:relative;
+            width:100%;
+            height:100%;
+        }
+        #wrap .pic img{
+            display:none;
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        #wrap .pic img.on{
+            display:block;
+        }
+        #wrap .info p{
+            position:absolute;
+            left:0;
+            width:100%;
+            height:25px;
+            line-height:25px;
+            font-size:14px;
+            text-align:center;
+            color:white;
+            background:rgba(255,102,0,0.8);
+        }
+        #wrap .info p.infoTop{
+            top:-25px;
+        }
+        #wrap .info p.infoBot{
+            bottom:-25px;
+        }
+        #wrap .btn div{
+            position:absolute;
+            top:50%;
+            margin-top:-15px;
+            width:30px;
+            height:30px;
+            line-height:30px;
+            text-align: center;
+            background:rgba(255,102,0,0.8);
+            cursor:pointer;
+        }
+        #wrap .btn div.left{left:0;}
+        #wrap .btn div.right{right:0;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="bar">
+            <p class="xiaoyao">循环切换</p>
+            <p>单边切换</p>
+        </div>
+        <div id="wrap">
+            <div class="pic">
+                <img class="on" src="img/i1.png" alt="1">
+                <img src="img/i2.png" alt="2">
+                <img src="img/i3.png" alt="3">
+                <img src="img/i4.png" alt="4">
+                <img src="img/i5.png" alt="5">
+                <img src="img/i6.png" alt="6">
+            </div>
+            <div class="info">
+                <p class="infoTop"><span>1</span>/6</p>
+                <p class="infoBot">第<span>一</span>张</p>
+            </div>
+            <div class="btn">
+                <div class="left"> &lt; </div>
+                <div class="right"> &gt; </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var oBar = document.querySelectorAll("#bar p");//获取两个循环切换按钮
+        var flag = true; //我们通过flag的真假，来判断当前处于 循环切换（true） 还是 单边切换（false）
+        var oImg = document.querySelectorAll("#wrap .pic img");
+        var xx = 0;
+        var oBtn = document.querySelectorAll("#wrap .btn div");//获取左右按钮
+        var length = oImg.length;//获取图片的数量，6张
+        var oSpan = document.querySelectorAll("#wrap .info p span");
+        //alert( oSpan[0].innerHTML );输出第几张
+        var aNum = ["一","二","三","四","五","六"];
+        oBar[0].onclick = function(){
+            this.className = "xiaoyao";
+            oBar[1].className = "";
+            flag = true;
+        };
+        oBar[1].onclick = function(){
+            this.className = "xiaoyao";
+            oBar[0].className = "";
+            flag = false;
+        };
+        oBtn[0].onclick = function(){
+            oImg[xx].className = '';
+            xx--;
+            //alert( xx );// 第一次点击的时候，xx=1
+            //alert( length );
+            if(xx < 0){
+                if(flag){
+                    xx = length-1;
+                }else{
+                    alert("到底了！！请点击反方向按钮");
+                    xx = 0;
+                }
+            }
+            oImg[xx].className = "on";
+            oSpan[0].innerHTML = xx+1;
+            oSpan[1].innerHTML = aNum[xx];
+        };
+        oBtn[1].onclick = function(){
+            oImg[xx].className = '';
+            xx++;
+            //alert( xx );
+            //alert( xx );// 第一次点击的时候，xx=1
+            //alert( length );
+            if(xx > length-1 ){
+                if(flag){
+                    xx=0;
+                }else{
+                    alert("到底了！！请点击反方向按钮");
+                    xx = length-1;
+                }
+            }
+            oImg[xx].className = "on";
+            oSpan[0].innerHTML = xx+1;
+            oSpan[1].innerHTML = aNum[xx];
+        };
+    </script>
+</body>
+</html>

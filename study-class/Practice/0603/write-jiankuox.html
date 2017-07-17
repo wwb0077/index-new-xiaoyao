@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>for循环练习</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        .wwb{
+            color:red;
+            text-align: center;
+            margin:50px;
+        }
+        #box{
+            position:relative;
+            border:1px dashed red;
+            margin:50px auto;
+            /*大盒子旋转*/
+            -webkit-transform: rotateZ(270deg);
+            -moz-transform: rotateZ(270deg);
+            -o-transform: rotateZ(270deg);
+            -ms-transform: rotateZ(270deg);
+            transform: rotateZ(270deg);
+        }
+        #box div{
+            position:absolute;
+            float:left;
+            width:50px;
+            height:50px;
+            line-height:50px;
+            text-align: center;
+            background: #26dd7e;
+            border-radius: 50%;
+            cursor:pointer;
+            /*文字旋转*/
+            -webkit-transform: rotateZ(90deg);
+            -moz-transform: rotateZ(90deg);
+            -o-transform: rotateZ(90deg);
+            -ms-transform: rotateZ(90deg);
+            transform: rotateZ(90deg);
+        }
+        #box div:hover{
+            background: #127add ;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="wwb">
+        <h1>练习for循环</h1>
+    </div>
+    <div id="box">
+    </div>
+</body>
+<script>
+    var oBox = document.getElementById("box");
+    lenght = 9;//打印盒子数量
+    mid = lenght/2;//折中取值
+    oBox.style.width = (lenght/2+1)*50 + 'px';//box大盒子的宽度
+    oBox.style.height = lenght*50 + 'px';
+    for(var i = 0;i < lenght;i++ ){
+        var Top = i*50;//每个盒子的定位高度取值
+        if(i<mid){
+            var left = 50*i;//每个盒子的定位宽度取值
+        }else{
+            var left = 50*(lenght-1-i);
+        }
+        //打印每个小盒子并且给他一个序列数值
+        oBox.innerHTML += "<div style='left:"+left+"px;top:"+Top+"px;'>"+(i+1)+"</div>"
+    }
+</script>
+</html>

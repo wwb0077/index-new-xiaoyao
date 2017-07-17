@@ -1,0 +1,35 @@
+<!doctype html>   <!--可以写注释:docment文档的意思，doctype文档类型是什么HTML-->
+<html lang="en">  <!--html根标签，lang属性=""--><!--红色为属性,英文环境下 翻译语音-->
+ <head>                                <!--网站头部-->
+  <meta charset="UTF-8">               <!--字符编码：UTF-8 国际编码-->
+  <meta name="Author" content="">      <!--作者-->
+  <meta name="Keywords" content="">    <!--关键词：用于SEO搜索-->
+  <meta name="Description" content=""> <!--搜索描述-->
+  <title>逍遥-点击换标签</title>       <!--网站标题-->
+  <style type="text/css">
+	#link{width:150px;height:20px;border:1px solid #ff6666;border-radius:2px;padding:10px;margin:auto;background:#eee;color:#ff0000;text-align:center;}
+  </style>
+ </head>
+ <body>    <!--网页主体-->
+	<div id="link">我是逍遥
+	</div>
+	<script type="text/javascript">
+		/*
+		定义变量
+		*/
+		var aa = document.getElementById("link");
+
+		aa.onclick = function(){
+			this.innerHTML = "我被点击了！"	
+		};
+
+		aa.onmouseenter = function(){
+			this.innerHTML = "鼠标移入了！"
+		};
+	
+		aa.onmouseleave = function(){
+			this.innerHTML = "移出了！"
+		};
+	</script>
+ </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        a{text-decoration: none;}
+        #box ul#list li{
+            list-style:none;
+            text-indent: 20px;
+            border-bottom:1px solid #000;
+            cursor: pointer;
+        }
+        #box ul#list{
+            width:300px;
+            border:1px solid #03a9f4;
+            margin: 30px auto;
+        }
+
+        #box ul#list li h3{
+            height:30px;
+            line-height:30px;
+            font-size: 16px;
+            background:#ffffcc;
+        }
+
+        #box ul#list li h3:hover{/*表头属性变色----也是按钮焦点 */
+            background-color: #ffa822;
+        }
+        #box ul#list li ul li{
+            height:25px;
+            line-height: 25px;
+            font-size: 12px;
+        }
+        #box ul#list li ul li:hover{
+            background-color: #ddd;
+        }
+        #box ul#list li ul li a{
+            margin-left:15px;
+        }
+        #box ul#list li h3.show{background-color: #ff6600}
+        #box ul#list li ul.show{
+            display: block;
+        }
+        #box ul#list li ul.none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="list">
+            <li>
+                <h3>同事</h3>
+                <ul>
+                    <li>
+                        <a href="#">胡老师（IT大师）</a>
+                    </li>
+                    <li>
+                        <a href="#">梁老师（分析大师）</a>
+                    </li>
+                    <li>
+                        <a href="#">李总监（大姐大-导师）</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3>客户</h3>
+                <ul>
+                    <li><a href="#">曹主任（5号楼）</a></li>
+                    <li><a href="#">周总（北京）</a></li>
+                    <li><a href="#">邹总（软件）</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3>领导</h3>
+                <ul>
+                    <li><a href="#">陈总（董事）</a></li>
+                    <li><a href="#">任总（执行董事）</a></li>
+                    <li><a href="#">杨总（总裁-三学）</a></li>
+                    <li><a href="#">岳总（外交官）</a></li>
+                    <li><a href="#">孙总（茶隐-货物大咖）</a></li>
+                    <li><a href="#">余总（仓库大咖）</a></li>
+                    <li><a href="#">易总（执行董事-黄河）</a></li>
+                    <li><a href="#">黄总（总裁-黄河）</a></li>
+                    <li><a href="#">杜总（总裁-合作机构）</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var oList = document.getElementById("list"),
+            aH3 = oList.getElementsByTagName("h3"),
+            aUl = oList.getElementsByTagName("ul"),
+            length = aUl.length;
+
+        //给每一个aH3[i]自定义属性，分别存储0-2的数值，让其他对应的函数体可以调用。
+        for (var i = 0; i <     length; i++) {
+            aH3[i].index = i;
+            aH3[i].onOff = true;
+            aH3[i].onclick = function(){
+                if (this.onOff){
+//                  控制点击后 改变行显示
+                    aUl[this.index].className = 'none';
+//                  控制点击后改变颜色
+                    this.className = 'show';
+//                    改变后，再把真的改为假
+                    this.onOff = false;
+                }else {
+                    aUl[this.index].className = '';
+                    this.className = '';
+                    this.onOff = true;
+                }
+            };
+        }
+    </script>
+<!--
+    自定义属性的理解
+    1，给对象设置一个属性
+    2，每个对象都可以设置属性
+    3，每个对象都可以设置任意个数的自定义属性
+    4，每个对象之前的自定义属性即使同名也是没有任何联系的
+-->
+</body>
+</html>

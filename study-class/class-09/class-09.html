@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>Title</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        #box{
+            width: 300px;
+            margin:100px auto;
+        }
+        #box ul.aaa li{
+            position: relative;
+            width:100%;
+            height: 30px;
+            border-bottom: 1px solid #bbbbbb;
+            cursor:pointer;
+        }
+        #box ul.aaa li:hover{
+            background-color: #ffffcc !important;
+        }
+        #box ul.aaa li p{
+            overflow: hidden;
+            width:360px;
+            height:30px;
+            margin-left: 40px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #ff3fd1;
+        }
+        #box ul li i{
+            position: absolute;
+            top:5px;
+            left:10px;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url("ckbg1.jpg") ;
+        }
+        #box ul li i.che{
+            background-image: url("ckbg2.jpg") ;
+        }
+        /* 下面是全选样式 all css */
+        #box ul.bbb{
+            width:100px;
+            border:1px solid red;
+            margin:10px auto;
+        }
+        #box ul.bbb li:hover{
+            background-color: #ff6332;
+        }
+
+        #box ul.bbb li{
+            position: relative;
+            cursor: pointer;
+        }
+        #box ul.bbb li p{
+            overflow: hidden;
+            width:50px;
+            height:30px;
+            margin-left: 40px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #392bff;
+        }
+        #box ul.bbb li.all p{
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="aaa">
+            <li class="list">
+                <i></i>
+                <p>苹果1</p>
+            </li>
+            <li class="list">
+                <i></i>
+                <p>香蕉2</p>
+            </li>
+            <li class="list">
+                <i></i>
+                <p>菠萝3</p>
+            </li>
+            <li class="list">
+                <i></i>
+                <p>哈密瓜4</p>
+            </li>
+            <li class="list">
+                <i></i>
+                <p>香蕉5</p>
+            </li>
+            <li class="list">
+            <i></i>
+            <p>葡萄6</p>
+            </li>
+            <li class="list">
+                <i></i>
+                <p>葡萄6</p>
+            </li>
+            <!--<li class="all">-->
+                <!--<i></i>-->
+                <!--<p>全选</p>-->
+            <!--</li>-->
+        </ul>
+        <ul class="bbb">
+            <li class="all">
+                <i></i>
+                <p>全选</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var oBox = document.getElementById("box"),
+            aList = oBox.querySelectorAll(".list"),
+            //获取list 下面的i
+            aListI = oBox.querySelectorAll(".list i"),
+
+            aAll = oBox.querySelector(".all"),
+            //获取all 下面的i
+            aAllI = aAll.querySelector("i");
+//        console.log( aList.length );
+        //列表内容 单个 选择或取消
+        for (var i = 0,length = aList.length;i < length;i++){
+            //利用莫 2 余数关系直接换行隔行分配颜色
+            aList[i].style.backgroundColor = i%2?"#ddd":"#ccc";
+            //给每一个.list 自定义一个属性，判断初始状态
+            aList[i].ifCheck = false;
+            //自定义下标属性，给.list 下面的i 标签对应匹配
+            aList[i].index = i;
+            aList[i].onclick = function () {
+                aListI[this.index].className = this.ifCheck?"":"che";
+                this.ifCheck = !this.ifCheck;
+                /* 这里可以进行三木运算，减少代码量
+                 var x = this.index;
+                if(this.ifCheck){
+                    aListI[x].className = "";
+                    this.ifCheck = !this.ifCheck;
+                }else {
+                    aListI[x].className = "che";
+                    this.ifCheck = !this.ifCheck;
+                };*/
+                var bool = true;
+                for (var k = 0;k<length;k++) {if (!aList[k].ifCheck){bool = false;break;}}
+                aAllI.className = bool?"che":"";
+                aAll.ifCheck = bool;
+            };
+        }
+        // 列表全选或者全部取消
+        aAll.ifCheck = false;
+        aAll.onclick = function () {
+            var bool = this.ifCheck;
+            for (var j = 0;j < length; j++) {
+                aListI[j].className = bool?"":"che";
+                aList[j].ifCheck = !bool;
+            }
+            aAllI.className = this.ifCheck?"":"che";
+            aAll.ifCheck = !bool;
+            /*===========
+            if ( this.ifCheck ){
+                //已选中 -> 未选中
+                for (var j = 0; j < length; j++) {
+                    aListI[j].className = "";
+                    aList[j].ifCheck = false;
+                }
+            } else{
+                //未选中 -> 已选中
+                for (j = 0; j < length; j++) {
+                    aListI[j].className = "check";
+                    aList[j].ifCheck = true;
+                }
+            }
+            //=============*/
+
+        };
+    </script>
+</body>
+</html>

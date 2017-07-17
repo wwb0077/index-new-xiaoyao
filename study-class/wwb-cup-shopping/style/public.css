@@ -1,0 +1,245 @@
+@charset "UTF-8";
+/***微波专属公共类***/
+/*样式重置*/
+body,p,h1,h2,h3,h4,h5,h6{margin:0;}
+body{font:14px/1.5 "Microsoft YaHei","Helvetica Neue",  "Heiti SC", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
+ul,ol,dl,dd{margin:0;padding:0;list-style:none;}
+a{/* height: 87px; */text-decoration:none;color:#000;outline:none;/* background: red; *//* width: 90px; */}
+img{vertical-align:bottom;}
+/*公共类*/
+/*** width ***/
+.w100{width:100%;}
+.h100{height:100%;}
+/*font*/
+.f-siz12{font-size:12px;}
+.f-siz14{font-size:14px;}
+.f-siz16{font-size:16px;}
+.f-siz18{font-size:18px;}
+.f-siz20{font-size:20px;}
+.f-siz22{font-size:22px;}
+.f-siz24{font-size:24px;}
+/*font-weight*/
+.f-wei-nor{font-weight:normal;}
+.f-wei-1{font-weight:100;}
+.f-wei-4{font-weight:400;}
+.f-wei-7{font-weight:700;}
+.f-wei-b{font-weight:bold;}
+/*** font-style***/
+.f-sty-nor{font-style:normal;}
+
+/*text-align*/
+.t-a-L{text-align:left;}
+.t-a-C{text-align:center;height: 62px;/* border: 1px solid #ddd; */}
+.t-a-R{text-align:right;}
+
+/*color*/
+
+.c-fff{color:#fff;}/*白色*/
+.c-eee{color:#eee;}/*灰色*/
+.c-ddd{color:#ddd;}/*灰色*/
+.c-ccc{color:#ccc;}/*灰色*/
+.c-bbb{color:#bbb;}/*灰色*/
+.c-aaa{color:#aaa;}/*灰色*/
+.c-999{color:#999;}/*灰色*/
+.c-888{color:#888;}/*灰色*/
+.c-777{color:#777;}/*灰色*/
+.c-666{color:#666;}/*灰色*/
+.c-555{color:#555;}/*灰色*/
+.c-444{color:#444;}/*灰色*/
+.c-333{color:#333;}/*灰色*/
+.c-222{color:#222;}/*灰色*/
+.c-111{color:#111;}/*灰色*/
+.c-la1{color:#000;}/*黑色*/
+.c-0f0{color:#0f0;}/*绿色*/
+.c-f00{color:#f00;}/*红色*/
+.c-ee3{color:#ee3985}/*玫红*/
+.c-f60{color:#f60;}/*橙色*/
+.c-00f{color:#00f;}/*蓝色*/
+.c-123{color:#123497;}
+
+
+/**** text-decoration ****/
+.t-d-u{text-decoration:underline;}
+.hov-t-d-u:hover{text-decoration:underline;}
+
+/**** background-color ****/
+.bgc-fff{background-color:#fff;}
+.bgc-000{background-color:#000;}
+.bgc-222{background-color:#222;}
+.bgc-gre{background-color:green;}
+.bgc-red{background-color:red;}
+.bgc-f60{background-color:#f60;}/*橙色*/
+.bgc-blue{background-color:blue;}
+
+/**** border ****/
+.bor-1{border:1px solid #ddd;}
+.bor-T{border-top:1px solid #ddd;}
+.bor-R{border-right:1px solid #ddd;}
+.bor-B{border-bottom:1px solid #ddd;}
+.bor-L{border-left:1px solid #ddd;}
+/**** border-radius ****/
+
+.bor-radius{
+	border-radius:50%;
+	/* overflow:hidden; */
+}
+/**** box-shadow ****/
+.box-shadow{box-shadow:0 0 5px 0 #888;}
+/**** overflow ****/
+.overflow-h{overflow:hidden;}
+
+/***** margin *****/
+.mar-auto{margin-left:auto;margin-right:auto;}
+.mar-T5{margin-top:5px;}
+.mar-T10{margin-top:10px;}
+.mar-T15{margin-top:15px;}
+.mar-T20{margin-top:20px;}
+.mar-T25{margin-top:25px;}
+.mar-T30{margin-top:30px;}
+
+/************/
+.mar-5{margin:5px;}
+.mar-10{margin:10px;}
+.mar-15{margin:15px;}
+.mar-20{margin:20px;}
+.mar-25{margin:25px;}
+
+/************/
+.mar-R0{margin-right:0 !important;}
+.mar-R5{margin-right:5px;}
+.mar-R10{margin-right:10px;}
+.mar-R15{margin-right:15px;}
+.mar-R20{margin-right:20px;}
+.mar-R25{margin-right:25px;}
+.mar-R30{margin-right:30px;}
+.mar-R40{margin-right:40px;}
+
+.mar-L0{margin-left:0 !important;}
+.mar-L5{margin-left:5px;}
+.mar-L10{margin-left:10px;}
+.mar-L15{margin-left:15px;}
+.mar-L20{margin-left:20px;}
+.mar-L25{margin-left:25px;}
+.mar-L30{margin-left:30px;}
+
+.mar-B0{margin-bottom:0 !important;}
+.mar-B5{margin-bottom:5px;}
+.mar-B10{margin-bottom:10px;}
+.mar-B15{margin-bottom:15px;}
+.mar-B20{margin-bottom:20px;}
+.mar-B25{margin-bottom:25px;}
+.mar-B30{margin-bottom:30px;}
+.mar-B35{margin-bottom:35px;}
+.mar-B40{margin-bottom:40px;}
+
+.mar-X0{margin:0 0;}
+.mar-X5{margin:0 5px;}
+.mar-X10{margin:0 10px;}
+.mar-X15{margin:0 15px;}
+.mar-X20{margin:0 20px;}
+.mar-X25{margin:0 25px;}
+
+.mar-Y5{margin-left:5px;margin-right:5px;}
+.mar-Y10{margin-left:10px;margin-right:10px;}
+.mar-Y15{margin-left:15px;margin-right:15px;}
+.mar-Y20{margin-left:20px;margin-right:20px;}
+.mar-Y25{margin-left:25px;margin-right:25px;}
+
+/*padding*/
+.pad-0{padding:0 !important;}
+.pad-5{padding:5px;}
+.pad-10{padding:10px;}
+.pad-15{padding:15px;}
+.pad-20{padding:20px;}
+   
+.pad-T5{padding-top:5px;}
+.pad-T10{padding-top:10px;}
+.pad-T15{padding-top:15px;}
+.pad-T20{padding-top:20px;}
+.pad-T25{padding-top:25px;}
+.pad-T30{padding-top:30px;}
+.pad-T35{padding-top:35px;}
+.pad-T40{padding-top:40px;}
+
+.pad-R5{padding-right:5px;}
+.pad-R10{padding-right:10px;}
+.pad-R15{padding-right:15px;}
+.pad-R20{padding-right:20px;}
+
+.pad-B5{padding-bottom:5px;}
+.pad-B10{padding-bottom:10px;}
+.pad-B15{padding-bottom:15px;}
+.pad-B20{padding-bottom:20px;}
+.pad-B25{padding-bottom:25px;}
+.pad-B30{padding-bottom:30px;}
+.pad-B35{padding-bottom:35px;}
+.pad-B40{padding-bottom:40px;}
+
+.pad-L5{padding-left:5px;}
+.pad-L10{padding-left:10px;}
+.pad-L15{padding-left:15px;}
+.pad-L20{padding-left:20px;}
+.pad-L25{padding-left:25px;}
+.pad-L30{padding-left:30px;}
+
+
+.pad-Y5{padding-top:5px;padding-bottom:5px;}
+.pad-Y10{padding-top:10px;padding-bottom:10px;}
+.pad-Y15{padding-top:15px;padding-bottom:15px;}
+.pad-Y20{padding-top:20px;padding-bottom:20px;}
+.pad-Y25{padding-top:25px;padding-bottom:25px;}
+.pad-Y30{padding-top:30px;padding-bottom:30px;}
+.pad-Y35{padding-top:35px;padding-bottom:35px;}
+
+.pad-X5{padding-left:5px;padding-right:5px;}
+.pad-X10{padding-left:10px;padding-right:10px;}
+.pad-X15{padding-left:15px;padding-right:15px;}
+.pad-X20{padding-left:20px;padding-right:20px;}
+.pad-X25{padding-left:25px;padding-right:25px;}
+.pad-X30{padding-left:30px;padding-right:30px;}
+
+
+/*** display ***/
+.dis-b{display:block;}
+.dis-ib{display:inline-block;}
+.dis-n{display:none;}
+
+
+
+/**** float ****/
+
+.fl-L{float:left;}
+.fl-R{float:right;}
+
+.clearfix{zoom:1;/*** 缩放 兼容IE ***/}
+.clearfix:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+/*position*/
+
+.pos-r{position:relative;}
+.pos-a{position:absolute;}
+.pos-f{position:fixed;}
+
+.T{top:0;}
+.R{right:0;}
+.B{bottom:0;}
+.L{left:0;}
+
+/*** cursor ***/
+.hov-cur:hover{cursor:pointer;}
+
+/*** 绘制三角形 ***/
+.triangle{
+	width:0;
+	height:0;
+	font-size:0;
+	line-height:0;
+	border:10px solid transparent;
+	border-color:red;
+	border-bottom:none;
+}
+/*** vertical-align***/
+.ver-a-m{vertical-align:middle}

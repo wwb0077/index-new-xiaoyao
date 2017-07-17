@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>逍遥动感图展示</title>
+    <style>
+        *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+        li{ list-style:none;}
+        body{
+            background: #94c2f1;
+            overflow: hidden;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+        #perspective{
+            perspective: 800px;
+            -moz-perspective: 800px;
+            -webkit-perspective: 800px;
+        }
+        #wrap{
+            position:relative;
+            width:520px;
+            height:780px;
+            margin:150px auto;
+            transform-style: preserve-3d;
+            /*-webkit-transform: rotateY(0deg);*/
+            /*-moz-transform: rotateY(0deg);*/
+            /*-ms-transform: rotateY(0deg);*/
+            /*-o-transform: rotateY(0deg);*/
+            /*transform: rotateY(0deg);*/
+            transform: rotateX(-38deg);
+        }
+        #wrap .auto{
+            margin: auto;
+            width: 130px;
+            height:200px;
+        }
+        #wrap .auto span{
+            position:absolute;
+            top:0;
+            /*-webkit-box-reflect: below 1px ;*/
+            /*border:1px solid #ddd;*/
+            width:130px;
+            height:195px;
+        }
+        #wrap span.pica{
+            background-image: url("3d_pic/1.jpg");
+        }
+        #wrap span.picb{
+            background-image: url("3d_pic/2.jpg");
+        }
+        #wrap span.picc{
+            background-image: url("3d_pic/3.jpg");
+        }
+        #wrap span.picd{
+            background-image: url("3d_pic/4.jpg");
+        }
+        #wrap span.pice{
+            background-image: url("3d_pic/5.jpg");
+        }
+        #wrap span.picf{
+            background-image: url("3d_pic/6.jpg");
+        }
+        #wrap span.picg{
+            background-image: url("3d_pic/7.jpg");
+        }
+        #wrap span.pich{
+            background-image: url("3d_pic/8.jpg");
+        }
+        #wrap span.pici{
+            background-image: url("3d_pic/9.jpg");
+        }
+        #wrap span.picj{
+            background-image: url("3d_pic/1-1.jpg");
+        }
+        #wrap span.pick{
+            background-image: url("3d_pic/2-2.jpg");
+        }
+        #wrap span.pico{
+            background-image: url("3d_pic/7-7.jpg");
+        }
+    </style>
+</head>
+<body>
+<div id="perspective">
+    <div id="wrap">
+        <div class="auto">
+            <span class="pica"></span>
+            <span class="picb"></span>
+            <span class="picc"></span>
+            <span class="picd"></span>
+            <span class="pice"></span>
+            <span class="picf"></span>
+            <span class="picg"></span>
+            <span class="pich"></span>
+            <span class="pici"></span>
+            <span class="picj"></span>
+            <span class="pick"></span>
+            <span class="pico"></span>
+        </div>
+    </div>
+</div>
+<script>
+    var oImg = document.querySelectorAll("span");
+    var nowX , nowY , lastX , lastY , minusX , minusY ,roX = -10 , roY = 0;
+    var oP = document.getElementById("perspective"),
+        oWrap = document.getElementById("wrap"),
+        timer = null;
+    (function (i) {
+        var imgLen = oImg.length;
+        var deg = 360/imgLen;
+        for (; i < imgLen; i++) {
+            oImg[i].style.transform = "rotateY("+deg*i+"deg) translateZ(350px)";
+        }
+    })(0);
+    document.onmousedown = function (e) {
+        e = e || window.event;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            nowX = e.clientX;nowY = e.clientY;
+            minusX = nowX - lastX;
+            minusY = nowY - lastY;
+            roX -= minusY * .2;
+            roY += minusX * .1;
+            oWrap.style.transform = 'rotateX('+roX+'deg) rotateY('+roY+'deg)';
+            lastX = nowX;
+            lastY = nowY;
+        }
+    };
+    document.onmouseup =function () {
+        document.onmousemove = null;
+        timer = setInterval(function () {
+            minusX *= .95;
+            minusY *= .95;
+            roX -= minusY * .2;
+            roY += minusX * .1;
+            oWrap.style.transform = 'rotateX('+roX+'deg) rotateY('+roY+'deg)';
+            if (Math.abs(minusX)<.1||Math.abs(minusY)<.1){
+                clearInterval(timer);
+            }
+        },13);
+    }
+</script>
+</body>
+</html>

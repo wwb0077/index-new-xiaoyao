@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>半世逍遥-微信二维码添加通讯录</title>
+		<meta name="keywords" content="通讯录" />
+		<meta name="description" content="扫一扫自动添加到通讯录" />
+		<script type="application/x-javascript">
+			addEventListener("load", function(){
+				setTimeout(hideURLbar, 0); 
+			},false);
+			function hideURLbar(){
+				window.scrollTo(0,1);
+				}
+		</script>
+		<style>
+			*{margin:0;padding:0;}
+			body{font-family:"Microsoft Yahei";}
+			#box{width:100%;height:512px;background:#960;}
+			.title{width:100%;height:50px;background:#336;text-align:center;line-height:50px;color:#fff;font-size:18px;}
+			.content{width:100%;height:460px;background:url("images/banner1.jpg");background-position:center;}
+			.info{width:920px;height:460px;margin:auto;}
+			.info .mm{text-align:center;height:50px;line-height:50px;font-size:22px;color:#ff6600;}
+			.info-text{width:450px;height:270px;float:left;margin-top:35px;}
+			.qrcode{width:256px;height:256px;float:right;margin-top:40px;border:1px solid #333333;}
+			.info-text p{width:200px;height:40px;background:#373733;color:#fff;float:left;margin:7px 12px;border-radius:5px;text-align:center;line-height:40px;overflow:hidden;}
+			.info-text p span{display:block;width:50px;height:40px;float:left;font-size:14px;}
+			.info-text p input{width:150px;height:40px;background:#2c2c29;border:0;outline:0;float:left;color:#fff;}
+			.info-text p.login{width:424px;background:#44b549;cursor:pointer;/*鼠标手形状*/}
+			.info-text p.login:hover{background:#3c9d41;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="title">扫一扫添加通讯录就是那么简单</div>
+			<div class="content">
+				<div class="info">
+					<div class="mm"><h3>希望每个人的距离更近点！</h3></div>
+					<div class="info-text">
+						<p>
+							<span>姓氏:</span>
+							<input type="text" id="lname">
+						</p>
+						<p>
+							<span>名字:</span>
+							<input type="text" id="fname">
+						</p>
+						<p>
+							<span>公司:</span>
+							<input type="text" id="company">
+						</p>
+					<!--<p>
+							<span>地址:</span>
+							<input type="text" id="address">
+						</p>
+					-->
+						<p>
+							<span>职务:</span>
+							<input type="text" id="title">
+						</p>
+						<p>
+							<span>手机:</span>
+							<input type="text" id="mobile">
+						</p>
+						<p>
+							<span>邮箱:</span>
+							<input type="text" id="email">
+						</p>
+						<p>
+							<span>网址:</span>
+							<input type="text" id="web">
+						</p>
+						<p>
+							<span>备注:</span>
+							<input type="text" id="desc">
+						</p>
+						<p class="login">开启通讯录
+						</p>
+					</div>
+					<div id="ww" class="qrcode"></div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/qrcode.js"></script>
+		<script>
+			var lname='',fname='',company='',address='',title='',mobile='',email='',web='',desc='';
+			$(".login").click(function(){
+				lname = "N:" + $("#lname").val() + "\n";
+				fname = "FN:" + $("#fname").val() + "\n";
+				company = "ORG:" + $("#company").val() + "\n";
+			//	address = "ADR;HOME" + $("#address").val() + "\n";
+				title = "TITLE:" + $("#title").val() + "\n";
+				mobile = "TEL:" + $("#mobile").val() + "\n";
+				email = "EMAIL;PREF;INTERNET:" + $("#email").val() + "\n";
+				web = "URL:" + $("#web").val() + "\n";
+				desc = "NOTE:" + $("#desc").val() + "\n";
+				var info = "BEGIN:VCARD\n"+lname+fname+company+title+mobile+email+web+desc+"END:VCARD";
+				//生成二维码
+				$("#ww").html('');//每次绘制之前先清楚图片（二维码）
+				new QRCode("ww",info);//新建一个二维码对象，构建对象方法是首字母大写
+			});
+		</script>
+	</body>
+</html>
+<!--BEGIN:VCARD
+VERSION:2.1
+N:姓;名
+FN:姓名NICKNAME:nickName
+ORG:公司;部门
+TITLE:职位
+NOTE;ENCODING=QUOTED-PRINTABLE:=C6=E4=CB=FB
+TEL;WORK;VOICE:电话1
+TEL;WORK;VOICE:电话2
+TEL;HOME;VOICE:电话1
+TEL;HOME;VOICE:电话2
+TEL;CELL;VOICE:
+TEL;PAGER;VOICE:0755
+TEL;WORK;FAX:传真
+TEL;HOME;FAX:传真
+ADR;WORK:;;单位地址;深圳;广东;433000;国家
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:=B5=A5=CE=BB=B5=D8=D6=B7
+=C9=EE=DB=DA
+=B9=E3=B6=AB
+433000
+=B9=FA=BC=D2
+ADR;HOME;POSTAL;PARCEL:;;街道地址;深圳;广东;433330;中国
+LABEL;HOME;ENCODING=QUOTED-PRINTABLE:=BD=D6=B5=C0=B5=D8=D6=B7
+=C9=EE=DB=DA
+=B9=E3=B6=AB
+433330
+=D6=D0=B9=FA
+URL:网址
+URL:单位主页
+EMAIL;PREF;INTERNET:邮箱地址
+X-QQ:38394246
+X-ICQ:icq
+X-WAB-GENDER:2
+REV:20060220T180305Z
+-->

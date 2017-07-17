@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Author" content="Fly">
+        <title>逍遥动感图展示</title>
+        <style>
+            *{ margin: 0; padding: 0; font-family:Microsoft yahei,serif;}
+            li{ list-style:none;}
+            body{
+                background: #000;
+                overflow: hidden;
+                -moz-user-select: none; /*火狐*/
+                -webkit-user-select: none;  /*webkit浏览器*/
+                -ms-user-select: none;   /*IE10*/
+                -khtml-user-select: none; /*早期浏览器*/
+                user-select: none;
+            }
+            #perspective{
+                perspective: 800px;/*景深 要设置在旋转3d动画的父集中 视角 跟上面的3D对应使用*/
+                -moz-perspective: 800px;
+                -webkit-perspective: 800px;
+            }
+            #wrap{
+                position:relative;
+                width:133px;
+                height:200px;
+                margin:150px auto;
+                /*border:1px solid red;*/
+                transform-style: preserve-3d;/*3D场景打造 针对wrap这个盒子中的所有内容*/
+                /*-webkit-transform: rotateY(0deg);*/
+                /*-moz-transform: rotateY(0deg);*/
+                /*-ms-transform: rotateY(0deg);*/
+                /*-o-transform: rotateY(0deg);*/
+                /*transform: rotateY(0deg);!*空间位置 按Y轴转动*!*/
+                transform: rotateX(-10deg);/*空间位置 按Y轴转动*/
+            }
+            #wrap img{
+                position:absolute;
+                top:0;
+                /*-webkit-box-reflect: below 50px -webkit-linear-gradient(top ,rgba(0,0,0,0) 40%,rgba(0,0,0,0.5) 100%);!*倒影的位置 与本体的距离*!*/
+                -webkit-box-reflect: below 1px -webkit-gradient(linear, 0% 50%,50% 50%, from(rgba(255,255,255,1)), to(red));
+
+                /*-webkit-box-reflect: below 1px ;*/
+                border:1px solid #ddd;
+                -webkit-border-radius:10px;
+                -moz-border-radius:10px;
+                border-radius:10px;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="perspective">
+            <div id="wrap">
+                <img src="images/pic_wwb/1.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/2.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/3.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/4.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/5.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/6.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/7.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/8.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/9.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/1-1.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/2-2.jpg" alt="" width="133" height="200">
+                <img src="images/pic_wwb/7-7.jpg" alt="" width="133" height="200">
+            </div>
+        </div>
+        <script>
+            /*因为每张图片都有旋转的一定的度数*/
+            /*
+            * 1，让所有图片旋转一定度数
+            * 2，托拖拽效果
+            *       按下去 移动鼠标 松开 分别做什么
+            *       找到旋转的度数 >> 鼠标移动的距离有关 而鼠标的移动的距离看做一个平面横轴和纵轴
+            *       移动的度数 = 鼠标移动的事件的当前事件与上一次移动事件的距离差
+            *       当前坐标值 上一次坐标值 坐标差
+            *       赋值
+            *       鼠标坐标差值不能直接赋值给度数，以为一旦赋值就会覆盖本身的度数，一定要在原来的基础上加上差值
+            * 3,惯性，鼠标松开一瞬间
+            *       惯性 改变的是 度数慢慢变小 度数的变化就是差值的变化 差值在一定的实际内慢慢的变小
+            *       而且，当差值小到一定程度的时候，整个改变就结束
+            *       某个时间内完成一件事 ————》定时器
+            *
+            *
+            * */
+            var oImg = document.getElementsByTagName("img");
+            var nowX , nowY , lastX , lastY , minusX , minusY ,roX = -10 , roY = 0;
+            var oP = document.getElementById("perspective"),
+                oWrap = document.getElementById("wrap"),
+                timer = null;
+            (function (i) {
+                //IIEF 函数自执行 函数变量被污染(fn)()
+                var imgLen = oImg.length;
+                var deg = 360/imgLen;//每一个图片旋转的度数
+                for (; i < imgLen; i++) {
+//                    console.log(i);
+                    oImg[i].style.transform = "rotateY("+deg*i+"deg) translateZ(350px)";
+                }
+            })(0);//用一个参数变量所有的i,0是i的参数 用i传入了
+//            console.log(i); 这里访问不到(fn)()中的fn中的变量
+            document.onmousedown = function (e) {
+                //鼠标按下
+                var e = e || window.event;// event IE不支持
+//                console.log( e.clientX,e.clientY );//打印鼠标坐标
+                //第一次点击产生的时候产生的最早的旧的值
+                lastX = e.clientX;
+                lastY = e.clientY;
+                this.onmousemove = function (e) {
+                    //鼠标移动
+                    var e = e || window.event;
+                    nowX = e.clientX;//每移动一次产生一个新的坐标值
+                    nowY = e.clientY;
+                    //TODoi 获取xy做什么 计算差
+                    minusX = nowX - lastX;
+                    minusY = nowY - lastY;
+//                    console.log( minusX,minusY );
+                    //求旋转的度数 旋转的度数与鼠标移动的差值是相反
+                    roX -= minusY * 0.2;
+                    roY += minusX * 0.1;
+                    //TODOi 赋值给度数
+                    oWrap.style.transform = 'rotateX('+roX+'deg) rotateY('+roY+'deg)';
+                    lastX = nowX;//每一移动完了
+                    lastY = nowY;
+                };
+                this.onmouseup =function () {
+                    //鼠标离开
+                    this.onmousemove = null;//清空鼠标移动事件
+                    //alert(1);
+                    //在一段时间内 重复做某件事 就是定时器
+                    timer = setInterval(function () {
+                        //重复乘以0到1之间的数就会不断变小
+                        minusX *= .95;
+                        minusY *= .95;
+                        roX -= minusY * 0.2;
+                        roY += minusX * 0.1;
+                        oWrap.style.transform = 'rotateX('+roX+'deg) rotateY('+roY+'deg)';
+                        if (Math.abs(minusX)<0.1||Math.abs(minusY)<0.1){
+                            clearInterval(timer);//停止当前定时器
+                        }
+                    },1000/60)
+                }
+            }
+        </script>
+    </body>
+</html>

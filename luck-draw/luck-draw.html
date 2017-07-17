@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>圆盘抽奖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        #atuo_z{
+            width:232px;
+            margin: auto;
+        }
+        .panel{
+            height:232px;
+            margin:0 auto;
+            position:relative;
+            overflow:hidden;
+        }
+        .panel .panel-face{
+            background-image:url('//wwb0077.com/luck-draw/Luck_draw_img/face.jpg');
+            background-size:cover;
+            width:232px;
+            height:232px;
+            position:absolute;
+            left:0;
+        }
+        .panel .panel-btn{
+            width:45px;
+            height:53px;
+            position:absolute;
+            top:88px;
+            left:93px;
+            background-image:url(//wwb0077.com/luck-draw/Luck_draw_img/btn.png);
+            background-size:cover;
+        }
+        .panel.playing .panel-btn{-webkit-transform:scale(0.9);transform:scale(0.9);}
+    </style>
+</head>
+<body>
+<div id="atuo_z">
+    <div id="ltpanel" class="panel"></div>
+</div>
+<script src="zepto.min.js"></script>
+<script src="loteryround.min.js"></script>
+<script>
+    // 转盘初始化
+    // 第一个参数是奖品的个数
+    // 第二个是用来旋转的圆盘（指针不动）
+    var panel=new PanelLotery({
+        length:8,
+        el:'#ltpanel'
+    });
+
+    $('.panel-btn').on('click', function(event) {
+        event.preventDefault();
+        if(panel.playing) return;
+        // 演示用，随机转到奖品n
+        // 初始的指针右侧开始
+        // 顺时针方向开始算
+        // 第一个奖品是n=0
+        var n=Math.floor(Math.random()*8);
+//        console.log(n);
+        panel.playto(n,function(){
+            var str=[
+                '恭喜你，抽中特别奖，今晚给我写报告吧',
+                '恭喜你，抽中一等奖，今晚给给我值班吧',
+                '恭喜你，抽中二等奖，今晚必须消费100万',
+                '恭喜你，抽中三等奖，今晚必须喝醉',
+                '恭喜你，抽中友情奖，今晚必须裸睡',
+                '恭喜你，抽中爱情奖，今晚必须打10个陌生电话',
+                '恭喜你，抽中迷茫奖，今晚必须唱歌',
+                '恭喜你，抽中复活奖，今晚必须打球'
+            ];
+            alert(str[n]);
+        });
+    });
+
+</script>
+</body>
+</html>

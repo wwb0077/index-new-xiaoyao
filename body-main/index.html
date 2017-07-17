@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <!--<link rel="stylesheet" href="css/index.css" />-->
+  <title>轮播制作-0501</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:url('images/bg2.jpg');}
+		#lunbo{
+			width:735px;
+			height:350px;
+			margin:100px auto;
+			position:relative;
+		}
+		#lunbo img{
+			position:absolute;
+			top:0;
+			left:0;
+			opacity:0;
+		}
+		#lunbo img.first_img{
+			opacity:1;
+		}
+		#lunbo ul{
+			width:100%;
+			position:absolute;
+			list-style:none;
+			bottom:15px;
+			text-align:center;
+		}
+		#lunbo ul li{
+			width:119px;
+			height:30px;
+			line-height:30px;
+			text-align:center;
+			display:inline-block;
+			background:rgba(255,255,255,0.5);
+		}
+		#lunbo ul li.first_li{
+			background:rgba(0,0,0,0.7);
+			color:white;
+		}
+		#lunbo p{
+			position:absolute;
+			background:rgba(0,0,0,0.5);
+			font-size:80px;
+			color:white;
+			padding:9px;
+			top:120px;
+			cursor:pointer;
+			border-radius:80px;
+		}
+		#lunbo p.but-left{left:5px;}
+		#lunbo p.but-right{right:5px;}
+	</style>
+ </head>
+ <body>
+	<div id='lunbo' class='lunbo'>
+		<img src="images/1.jpg" alt="" />
+		<img src="images/2.jpg" alt="" />
+		<img src="images/3.jpg" alt="" />
+		<img src="images/4.jpg" alt="" />
+		<img src="images/5.jpg" alt="" />
+		<img src="images/6.jpg" alt="" />
+		<ul>
+			<li>节日快乐</li>
+			<li>节日快乐</li>
+			<li>节日快乐</li>
+			<li>节日快乐</li>
+			<li>节日快乐</li>
+			<li>节日快乐</li>
+		</ul>
+		<p class='but-left'>&lt</p>
+		<p class='but-right'>&gt</p>
+	</div>
+ </body>
+ <script type="text/javascript">
+	//document文档 alert(aLi.length); 个数
+	var aP = document.getElementsByTagName('p');
+	var aLi = document.getElementsByTagName('li');
+	var aImg = document.getElementsByTagName('img');
+	var oLunbo = document.getElementById('lunbo');
+	var timer;
+	var num=0;
+	var oldLi = aLi[num];
+	var oldImg = aImg[num];
+		oldLi.className = 'first_li'
+		oldImg.className = 'first_img'
+		var i = 0;
+		for(;i<6;i++){
+			aLi[i].index = i;
+			//点击事件
+			aLi[i].onclick=function(){
+				//alert(this.index);
+				//this.className = 'first_li';
+				num = this.index;
+				//alert(num);
+				run();
+			}
+			function run(){
+				oldLi.className = '';//清楚class名称
+				oldImg.className = '';
+				oldLi = aLi[num];//更新oldLi
+				oldImg = aImg[num];
+				aLi[num].className = 'first_li';
+				aImg[num].className = 'first_img';
+			}
+		}
+		//左点击
+		aP[0].onclick = function(){
+			num--;
+			if(num<0){
+				num=5;
+			}
+			run();
+		}
+		//右点击
+		aP[1].onclick = function(){
+			num++;
+			if(num==6){
+				num=0;
+			}
+			run();
+		}
+		//自动轮播开始
+		outoplay();
+		function outoplay(){
+			timer = setInterval(function(){
+				run();
+				num++;
+					if(num==6){
+						num=0;	
+					}//console.log(num);
+			},1000)
+		}
+		//alert(i);
+		//清楚定时器，鼠标划入
+		oLunbo.onmouseover = function(){
+			clearInterval(timer);
+		}
+		//鼠标移开
+		oLunbo.onmouseout = function(){
+			outoplay();
+		}
+ </script>
+</html>

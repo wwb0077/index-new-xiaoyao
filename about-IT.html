@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>逍遥web-技术文章</title>
+	<!-- mobile apps -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="逍遥，半世逍遥" />
+	<!-- //mobile apps -->
+	<!-- Custom Theme files -->
+		<link href="css/public.css" type="text/css" rel="stylesheet" media="all">
+		<!--<link href="css/style.css" type="text/css" rel="stylesheet" media="all">-->
+		<link href="css/about-it/about-it.css" type="text/css" rel="stylesheet" media="all">
+		<link href="iconfont/iconfont.css" type="text/css" rel="stylesheet" >
+	<!-- //Custom Theme files -->
+		<style>
+			#timer{
+				width:1200px;
+				text-align: center;
+				padding:0 20px;
+			}
+			span#timer_end{
+				font-size: 25px;
+				line-height: 25px;
+			}
+            /*跳动的当前时间 star */
+			#timer h1{
+				padding-top: 80px;
+				font-size: 35px;
+				color: #dda932;
+			}
+            #time_Jumpy{
+                width:1200px;
+                margin:5px auto;
+            }
+            #time_Jumpy ul{
+                display: inline-block;
+            }
+            #time_Jumpy ul li{
+                float:left;
+                margin:0 5px;
+            }
+            #time_Jumpy ul li.num{
+                width:40px;
+                height:60px;
+            }
+            #time_Jumpy ul li.dot{
+                width:17px;
+                height:60px;
+                background-image: url("images/timer_img/d.png");
+            }
+            #time_Jumpy ul li.l0{
+                background-image: url("images/timer_img/0.png");
+            }
+            #time_Jumpy ul li.l1{
+                background-image: url("images/timer_img/1.png");
+            }
+            #time_Jumpy ul li.l2{
+                background-image: url("images/timer_img/2.png");
+            }
+            #time_Jumpy ul li.l3{
+                background-image: url("images/timer_img/3.png");
+            }
+            #time_Jumpy ul li.l4{
+                background-image: url("images/timer_img/4.png");
+            }
+            #time_Jumpy ul li.l5{
+                background-image: url("images/timer_img/5.png");
+            }
+            #time_Jumpy ul li.l6{
+                background-image: url("images/timer_img/6.png");
+            }
+            #time_Jumpy ul li.l7{
+                background-image: url("images/timer_img/7.png");
+            }
+            #time_Jumpy ul li.l8{
+                background-image: url("images/timer_img/8.png");
+            }
+            #time_Jumpy ul li.l9{
+                background-image: url("images/timer_img/9.png");
+            }
+
+            /*滚动的当前时间 end */
+
+            /*当前时间   跳动的 star */
+            #time_roll{
+                width: 100%;
+                height:60px;
+                margin: 50px auto;
+            }
+            #time_roll ul{
+                display: inline-block;
+            }
+            #time_roll ul li{
+                float: left;
+                margin: 0 5px;
+            }
+            #time_roll ul li.num{
+                overflow: hidden;
+                position: relative;
+                width: 40px;
+                height: 60px;
+            }
+            #time_roll ul li.num div{
+                position: absolute;
+                width: 40px;
+                height: 120px;
+            }
+            #time_roll ul li.num span{
+                display: block;
+                width: 40px;
+                height: 60px;
+            }
+            #time_roll ul li.dot{
+                width: 17px;
+                height: 60px;
+                background-image: url("images/timer_img/d.png");
+            }
+            #time_roll ul li span.l0{
+                background-image: url("images/timer_img/0.png");
+            }
+            #time_roll ul li span.l1{
+                background-image: url("images/timer_img/1.png");
+            }
+            #time_roll ul li span.l2{
+                background-image: url("images/timer_img/2.png");
+            }
+            #time_roll ul li span.l3{
+                background-image: url("images/timer_img/3.png");
+            }
+            #time_roll ul li span.l4{
+                background-image: url("images/timer_img/4.png");
+            }
+            #time_roll ul li span.l5{
+                background-image: url("images/timer_img/5.png");
+            }
+            #time_roll ul li span.l6{
+                background-image: url("images/timer_img/6.png");
+            }
+            #time_roll ul li span.l7{
+                background-image: url("images/timer_img/7.png");
+            }
+            #time_roll ul li span.l8{
+                background-image: url("images/timer_img/8.png");
+            }
+            #time_roll ul li span.l9{
+                background-image: url("images/timer_img/9.png");
+            }
+
+		</style>
+	</head>
+<body>
+	<!-- banner -->
+	<div id="banner">
+		<div class="bg-all">
+			<div class="bg-all-a">
+				<div class="bar-top  container">
+					<div class="top">
+						<ul class="clearFix container">
+							<li class="none fl-L">梦想的启程</li>
+							<li class="log fl-L pad-L15">
+								<img src="images/my-logo01-mi.png" width="16" height="16" alt="">
+								<p>wb</p>
+							</li>
+							<li class="fl-R">
+								<p>联系方式</p>
+								<i class="icon-c iconfont icon-youxiang2"></i>
+								<span>1797373219@qq.com</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--&lt;!&ndash;-->
+			<div class="bar-mid">
+				<div class="bar-mid-center">
+					<div class="bar-mid-sch pad-T30 t-a-C">
+						<form class="clearFix" action="javascript:void(0)" method="post">
+							<input class="fl-L" type="text" name="Email" placeholder="搜索内容" required="">
+							<input class="fl-L" type="submit" value="搜 索">
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--&ndash;&gt;-->
+			<div class="bar-bottom container">
+				<div class="nav t-a-C">
+					<ul class="clearFix">
+						<li class="fl-L">
+							<a href="index.html">
+								<i class="icon iconfont icon-gerenjieshao"></i>
+								<span class="bar-a">个人介绍</span>
+							</a>
+						</li>
+						<li class="fl-L">
+							<a href="about-IT.html">
+								<i class="icon iconfont icon-4"></i>
+								<span class="bar-a">世界世界</span>
+							</a>
+						</li>
+						<li class="fl-L">
+							<a href="Life-Photos.html">
+								<i class="icon iconfont icon-zhaopian1"></i>
+								<span class="bar-a">生活照片</span>
+							</a>
+						</li>
+						<li class="fl-L">
+							<a href="#">
+								<i class="icon iconfont icon-gongzuo4"></i>
+								<span class="bar-a">工具下载</span>
+							</a>
+						</li>
+						<li class="fl-L">
+							<a href="studied.html">
+								<i class="icon iconfont icon-ITxiangmu"></i>
+								<span class="bar-a">前端历程</span>
+							</a>
+						</li>
+						<li class="fl-L">
+							<a href="#">
+								<i class="icon iconfont icon-jiubokefu"></i>
+								<span class="bar-a">空间留言</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- slid -->
+	<div class="slid about-w3ls-slid">
+		<div class="container t-a-C pad-T15 f-siz16">
+			<h3>Every time I open this web page, a picture of everyday memories is presented to me, which is worth the pleasure!</h3>
+		</div>
+	</div>
+	<div id="timer">
+        <h1>滚动的当前时间</h1>
+        <div id="time_roll" class="t-a-C">
+            <ul class="clearFix">
+                <li class="num">
+                    <div>
+                        <span class="first l0"></span>
+                        <span class="second l0"></span>
+                    </div>
+                </li>
+                <li class="num"><div><span class="first l0"></span><span class="second l0"></span></div></li>
+                <li class="dot"></li>
+                <li class="num"><div><span class="first l0"></span><span class="second l0"></span></div></li>
+                <li class="num"><div><span class="first l0"></span><span class="second l0"></span></div></li>
+                <li class="dot"></li>
+                <li class="num"><div><span class="first l0"></span><span class="second l0"></span></div></li>
+                <li class="num"><div><span class="first l0"></span><span class="second l0"></span></div></li>
+            </ul>
+        </div>
+        <h1>跳动的当前时间</h1>
+        <div id="time_Jumpy" class="t-a-C">
+            <ul class="clearFix">
+                <li class="num l0"></li>
+                <li class="num l0"></li>
+                <li class="dot"></li>
+                <li class="num l0"></li>
+                <li class="num l0"></li>
+                <li class="dot"></li>
+                <li class="num l0"></li>
+                <li class="num l0"></li>
+            </ul>
+        </div>
+        <h1>节日倒计时</h1>
+		<span id="timer_end"></span>
+		<h1>世界世界</h1>
+		<div id="time_box">
+			<p>北京时间：<span></span></p>
+            <br/>
+			<p>纽约时间：<span></span></p>
+            <br/>
+			<p>马德里时间：<span></span></p>
+            <br/>
+			<p>开罗时间：<span></span></p>
+            <br/>
+			<p>莫斯科时间：<span></span></p>
+            <br/>
+			<p>东京时间：<span></span></p>
+            <br/>
+			<p>悉尼时间：<span></span></p>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<div class="footer-all">
+			<div class="footer-nav container">
+				<ul>
+					<li><a href="index.html">个人介绍</a></li>
+					<li><a href="about-IT.html">世界世界</a></li>
+					<li><a href="Life-Photos.html">生活照片</a></li>
+					<li><a href="#">工具下载</a></li>
+					<li><a href="#">业务爱好</a></li>
+					<li><a href="#">空间留言</a></li>
+				</ul>
+			</div>
+			<div class="footer-mid container">
+				<div class="footer-mid-cen clearFix">
+					<div class="footer-left fl-L t-a-C">
+						<h3>联 系 方 式 :</h3>
+						<ul>
+							<li class="clearFix">
+								<i class="iconfont icon-yemian fl-L"></i>
+								<p class="fl-L">上海市闸北永和路118弄16号</p>
+							</li>
+							<li class="clearFix">
+								<i class="bb iconfont icon-lianxifangshibiangeng fl-L"></i>
+								<p class="fl-L">133****8133</p>
+							</li>
+							<li class="clearFix">
+								<i class="cc iconfont icon-youxiang1 fl-L"></i>
+								<a href="mailto:1797373219@qq.com" class="fl-L">1797373219@qq.com</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-center fl-L">
+						<h3 class="t-a-C">搜 索 内 容 :</h3>
+						<div class="footer-cen-sch t-a-C pad-T30">
+							<form class="clearFix" action="javascript:void(0)" method="post">
+								<input class="fl-L" type="text" name="Email" placeholder="搜索内容" required="">
+								<input class="fl-L" type="submit" value="搜 索">
+							</form>
+						</div>
+					</div>
+					<div class="footer-right fl-L t-a-C">
+						<h3>网 站 导 航 :</h3>
+						<ul class="footer-nav pad-T30 clearFix">
+							<li class="fl-L">
+								<i class="iconfont icon-zhaopian2"></i>
+							</li>
+							<li class="fl-L">
+								<i class="iconfont icon-icon01"></i>
+							</li>
+							<li class="fl-L">
+								<i class="iconfont icon-moban3xingquaihao"></i>
+							</li>
+							<li class="fl-L">
+								<i class="iconfont icon-youxiang2"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom container t-a-C">
+				<div class="footer-bottom-w clearFix">
+					<p class="fl-L">个人博客网站© 2017 Personal website -Φ- wengweibo | 逍遥</p>
+					<a class="fl-L" href="http://wwb0077.com">wwb0077.com</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //footer -->
+</body>
+	<script src="js/about_IT/about-IT-time.js"></script>
+
+</html>

@@ -1,0 +1,437 @@
+
+/*==============导航菜单 nav star ==================================*/
+
+    #nav_top .nav-list {
+        text-align: center;
+    }
+    #nav_top ul{
+        display:inline-block;
+        width:1200px;
+        height: 160px;
+    }
+    #nav_top ul li {
+        display: block;
+        width: 200px;
+        text-align: center;
+        -webkit-transition: border .5s;
+        -moz-transition: border .5s;
+        -o-transition: border .5s;
+        transition: border .5s;
+        background: #1ABC9C;
+        /*border-left: 1px solid rgb(78, 78, 78);*/
+    }
+    #nav_top ul li a {
+        display: block;
+        width: auto;
+        height:160px;
+        font-size: 25px;
+        color: rgba(249, 249, 249, .9);
+        text-decoration: none;
+        -webkit-transition: color .5s, background .5s, height .5s;
+        -moz-transition: color .5s, background .5s, height .5s;
+        -o-transition: color .5s, background .5s, height .5s;
+        transition: color .5s, background .5s, height .5s;
+        font-weight:100;
+    }
+    #nav_top ul li a span {
+        display: block;
+    }
+    #nav_top ul li a span i{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 30px;
+        padding: 15px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        -webkit-box-shadow: 0 0 0 30px transparent;
+        -moz-box-shadow: 0 0 0 30px transparent;
+        -o-box-shadow: 0 0 0 30px transparent;
+        box-shadow: 0 0 0 30px transparent;
+        background: rgba(255, 255, 255, 0.18);
+        -webkit-transition: box-shadow .6s ease-in-out;
+        -moz-transition: box-shadow .6s ease-in-out;
+        -o-transition: box-shadow .6s ease-in-out;
+        transition: box-shadow .6s ease-in-out;
+    }
+    #nav_top ul li a .icon {
+        padding-top: 20px;
+    }
+    #nav_top ul li a .icon + span {
+        margin-top: 20px;
+        -webkit-transition: margin .5s;
+        -moz-transition: margin .5s;
+        -o-transition: margin .5s;
+        transition: margin .5s;
+    }
+    #nav_top ul:hover a {
+        color: rgba(249, 249, 249, .5);
+    }
+    #nav_top ul:hover a:hover {
+        color: rgba(254, 121, 1, 1);
+    }
+    #nav_top ul li:nth-child(6n+1) {
+        border:none;
+    }
+    #nav_top ul li a:hover .icon + span {
+        margin-top: 1.8em;
+        -webkit-transition: margin .5s;
+        -moz-transition: margin .5s;
+        -o-transition: margin .5s;
+        transition: margin .5s;
+    }
+    #nav_top ul li a:hover i, .nav a:active i, .nav a:focus i {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255,0.2);
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255,0.2);
+        -o-box-shadow: 0 0 0 0 rgba(255,255,255,0.2);
+        box-shadow: 0 0 0 0 rgba(255,255,255,0.2);
+        -webkit-transition: box-shadow .5s ease-in-out;
+        -moz-transition: box-shadow .5s ease-in-out;
+        -o-transition: box-shadow .5s ease-in-out;
+        transition: box-shadow .5s ease-in-out;
+    }
+    #nav_top ul li a:hover,
+    #nav_top ul li a:active,
+    #nav_top ul li a:focus {
+        border-bottom: 4px solid #FC6914;
+        height: 220px;
+    }
+
+/*==============导航菜单 nav end =====================================*/
+/*=============== 轮播 lunbo star ====================================*/
+
+    #main .main-banner{
+        margin: auto;
+        height: 450px;
+    }
+    #main .main-banner ul{ height:350px;}
+    #main .main-banner ul li{
+        display:none;
+        width:100%;
+        height:350px;
+        overflow:hidden;
+    }
+    #main .main-banner ul li.active{display:block;}
+    #main ol{
+        padding-bottom: 10px;
+    }
+    #main ol li{
+        width:20px;
+        height:20px;
+        background:#5b431d;
+        display:inline-block;
+        -moz-border-radius: 15px ;
+        -webkit-border-radius: 15px;
+        border-radius:15px;
+        /*
+        -webkit-transform: all 1s ease;
+        -moz-transform: all 1s ease;
+        -o-transform: all 1s ease;
+        transition: all 1s ease;
+        */
+        transition:width 1s;
+        -moz-transition:width 1s; /* Firefox 4 */
+        -webkit-transition:width 1s; /* Safari and Chrome */
+        -o-transition:width 1s; /* Opera */
+    }
+    #main ol li:hover{
+        cursor:pointer;
+    }
+    #main ol li.active{
+        width:58px;
+        border-radius:5px;
+        background:#c98641;
+    }
+
+/*=============== 轮播 lunbo end ====================================*/
+
+/*=============== 图片选播 lunbo star ===============================*/
+
+    #pic_mid{
+        padding-top: 80px;
+        padding-bottom: 50px;
+        height: 675px;
+    }
+    #pic_mid .pic_all{
+        width: 1200px;
+        overflow: hidden;
+    }
+    #pic_mid .pic_all .hover{
+        background: #f60;
+    }
+    /*----- nav star --------------*/
+
+    #pic_nav{
+        height:50px;
+    }
+    #pic_nav ul{
+        text-align: center;
+    }
+    #pic_nav ul li{
+        display: inline-block;
+        width:300px;
+        line-height: 50px;
+        background-color: #1cbaff;
+    }
+
+    /*----- nav end --------------*/
+
+    #pic_list{
+        width: 1200px;
+        height: 675px;
+        margin: 0 auto;
+        /*border:1px solid red;*/
+    }
+    #pic_list ul{
+        height:675px;
+    }
+    #pic_list ul li{
+        display: none;
+        position: relative;
+    }
+    #pic_list ul li img{
+        width:100%;
+        height: 675px;;
+    }
+    #pic_list ul li div{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width:100%;
+        height:55px;
+        background: rgba(0,0,0,0.5);
+        text-align: center;
+    }
+    #pic_list ul li div span{
+        width:55px;
+        height:55px;
+        background:#ddd;
+        display: inline-block;
+        margin-left: 5px;
+        text-align: center;
+        line-height: 55px;
+    }
+
+    /*----------------------
+
+    --------------------- */
+    #lunbo{
+        width:735px;
+        height:350px;
+        margin:100px auto;
+        position:relative;
+        -moz-user-select: none; /*火狐*/
+
+        -webkit-user-select: none; /*webkit浏览器*/
+
+        -ms-user-select: none; /*IE10*/
+
+        -khtml-user-select: none; /*早期浏览器*/
+
+        user-select: none;
+    }
+    #lunbo img{
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:0;
+    }
+    #lunbo img.first_img{
+        opacity:1;
+    }
+    #lunbo ul{
+        width:100%;
+        position:absolute;
+        list-style:none;
+        bottom:15px;
+        text-align:center;
+    }
+    #lunbo ul li{
+        width:119px;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+        display:inline-block;
+        background:rgba(255,255,255,0.5);
+    }
+    #lunbo ul li.first_li{
+        background:rgba(0,0,0,0.7);
+        color:white;
+    }
+    #lunbo p{
+        position:absolute;
+        background:rgba(0,0,0,0.5);
+        font-size:80px;
+        color:white;
+        padding:9px;
+        top:120px;
+        cursor:pointer;
+        border-radius:80px;
+    }
+    #lunbo p.but-left{left:5px;}
+    #lunbo p.but-right{right:5px;}
+
+/*-----------------
+--------------------*/
+
+
+
+/*=============== 图片选播 lunbo end ===============================*/
+/*=============================================================
+------------------ 底部 ---------------------------------------
+=============================================================*/
+/*-- footer --*/
+#footer {  padding: 20px 0 0;  }
+/*---------------底部最大的盒子部分-----------------------------*/
+#footer .footer-all{
+    min-width:1200px;
+    width: 100%;
+    background: url("../../images/overlay.png") #272727 repeat;
+    -webkit-background-size:cover;
+    background-size:cover;
+    -moz-background-size:cover;
+}
+/*-------------- 上部导航信息部分 ------------------------------*/
+#footer .footer-all .footer-nav {
+    display: block;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+}
+#footer .footer-all .footer-nav ul li {
+    display: inline-block;
+}
+#footer .footer-all .footer-nav ul li a {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 10px;
+    -webkit-transition:.5s all;
+    -moz-transition:.5s all;
+    transition:.5s all;
+    font-weight: 100;
+}
+#footer .footer-all .footer-nav ul li a:hover {
+    color: #FC6914;
+}
+/*--------------- mid居中 ------------------------------------*/
+#footer .footer-all .footer-mid .footer-mid-cen {
+    width:100%;
+    height:200px;
+    padding:25px 0;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+/*--------------- mid  左边 ----------------------------------*/
+#footer .footer-all .footer-mid .footer-mid-cen .footer-left {
+    width:380px;
+    height:200px;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-left ul {
+    display: inline-block;
+    text-align: center;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-left ul li {
+    display:block;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-left ul li:nth-child(2) {
+    margin: 20px 0;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-left ul li a {
+    color: #FC6914;
+}
+/*--------------- mid 中间部分 ---------------------------  ---*/
+#footer .footer-all .footer-mid .footer-mid-cen .footer-center {
+    width:440px;
+    height: 200px;
+}
+#footer .footer-all .footer-mid .footer-mid-cen h3 {
+    font-size: 20px;
+    color: #1ABC9C;
+    margin-bottom: 10px;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-center form {
+    display: inline-block;
+    height: 50px;
+    margin:auto;
+}
+#footer .footer-all .footer-mid input[type="text"] {
+    width: 260px;
+    height:50px;
+    line-height: 50px;
+    padding: 0 14px;
+    font-size: 14px;
+    color: #fff;
+    outline: none;
+    border: 1px solid #fff;
+    border-right: none;
+    background: none;
+    -webkit-appearance: none;
+    transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+}
+#footer .footer-all .footer-mid input[type="submit"] {
+    line-height: 50px;
+    color: #fff;
+    outline: none;
+    padding: 0 14px;
+    font-size: 14px;
+    border: 1px solid #FFF;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -webkit-appearance: none;
+    background: none;
+    cursor: pointer;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-center form:hover input[type="text"] {
+    border-color: #FC6914;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-center form:hover input[type="submit"] {
+    border-color: #FC6914;
+    background: #FC6914;
+}
+/*------------- mid 右边部分 -----------------------------------*/
+#footer .footer-all .footer-mid .footer-mid-cen .footer-right{
+    width: 380px;
+    height:200px;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-right ul.footer-nav {
+    display: inline-block;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-right ul.footer-nav li {
+    height: 45px;
+    line-height: 45px;
+    width:60px;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-right ul.footer-nav li i {
+    font-size: 30px;
+    height: 20px;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: normal;
+}
+#footer .footer-all .footer-mid .footer-mid-cen .footer-right ul.footer-nav li i:hover {
+    color: #FC6914;
+}
+/*-------------- 最底部 ----------------------------------------*/
+#footer .footer-all .footer-bottom .footer-bottom-w {
+    display: inline-block;
+}
+#footer .footer-all .footer-bottom p {
+    line-height: 30px;
+    color: #fff;
+}
+#footer .footer-all .footer-bottom a {
+    display: inline-block;
+    line-height: 30px;
+    color: #FC6914;
+}
+/*-------------------------------------------------------------*/

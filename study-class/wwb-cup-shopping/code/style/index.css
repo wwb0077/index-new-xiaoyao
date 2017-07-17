@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+
+
+/*** 公共类 ***/
+.min-w{min-width:1022px;}
+.container{width:1200px;margin:auto;}
+
+/********************************
+	==== header star =====	
+********************************/
+/*** 头部顶部 star ***/
+#header{border-top:1px solid #2b1811;border-bottom:1px solid #978055;}
+#header .header-top p.tips{top:18px;left:28px;}
+#header .header-top .logo-wrap{padding:35px 0;}
+#header .header-top .logo-wrap a{color:#8e8e8e;}
+#header .header-top img.hot-tel{top:0;right:-28px;}
+/*** 头部导航 star ***/
+
+#header .nav li{width:150px; display:inline-block;}
+#header .nav li a h3{color:#3f2900;font-size:16px;}
+#header .nav li a span{color:#634100;}
+
+/********************************
+	==== main star =====	
+********************************/
+/*** 轮播 star ***/
+#main .main-banner{border-top:2px solid #634100;}
+#main .main-banner ul{height:500px;}
+#main .main-banner ul li{height:500px;overflow:hidden;}
+#main .main-banner ol{border-top:1px solid red;border-bottom:1px solid #ddd;}
+#main .main-banner ol li{
+	width:10px;
+	height:10px;
+	background:#5b431d;
+	display:inline-block;
+	
+}
+#main .main-banner ol li.active{
+	width:48px;
+	border-radius:5px;
+	background:#c98641;
+}

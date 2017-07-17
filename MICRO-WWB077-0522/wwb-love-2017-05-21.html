@@ -1,0 +1,149 @@
+<!doctype html>   <!--可以写注释:docment文档的意思，doctype文档类型是什么HTML-->
+<html lang="en">  <!--html根标签，lang属性=""--><!--红色为属性,英文环境下 翻译语音-->
+ <head>                                <!--网站头部-->
+  <meta charset="UTF-8">               <!--字符编码：UTF-8 国际编码-->
+  <meta name="Author" content="">      <!--作者-->
+  <meta name="Keywords" content="半世逍遥">    <!--关键词：用于SEO搜索-->
+  <meta name="Description" content="简单的爱心展示图，知识点较多，方便日后巩固学习"> <!--搜索描述-->
+  <title>半世逍遥-爱心web特效展示</title>       <!--网站标题-->
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:#fff;overflow:hidden;}
+	</style>
+ </head>
+ <body>    <!--网页主体-->
+	<canvas></canvas>
+	<script type="text/javascript">
+		var canvas = document.querySelector('canvas');
+		var ctx = canvas.getContext('2d');//创建2d平面模式
+		var wW = window.innerWidth;//获取浏览器的宽度
+		var wH = window.innerHeight;//获取浏览器的高度
+		var num =100;
+		var hearts=[];//所有数组 心的集合
+		var heartImage = new Image();//创建一个新的image对象
+		heartImage.src = 'images/heart/heart01.png';//改变路径
+		heartImage.onload = init;//render; //加载图片时候调用该函数（当图片加载完之后渲染）
+		init(); //运行初始化函数
+		function init(){ //创建一个函数（方法）
+			//初始化画布的大小
+			canvas.width = wW;
+			canvas.height = wH;
+			for(var i=0;i<num;i++){
+				hearts[i]=new Heart();
+				//nHeart = new Heart();//实例化对象 一个红心
+			}
+			//console.log(hearts);
+			requestAnimationFrame(render);
+
+			//--------//
+			//window.onresize 窗口浏览器大小改变时
+			window.addEventListener('resize',function(){
+				wW = window.innerWidth;
+				wH = window.innerHeight;
+				canvas.width = wW;
+				canvas.height = wH;
+			})
+			//--------//
+		}
+		function Heart(){ //构造函数 首字母大写
+			this.x = Math.random()*wW;//初始化生成的范围为浏览器的宽度
+			this.y = Math.random()*wH;
+			this.opacity = Math.random()*.5+.5;
+			//[0.5到1]
+			this.vel = {//位移参数 移动量的方向
+				x: (Math.random()-.5)*4,//负值为左走 正值往右走
+				y: (Math.random()-.5)*4,//4就是移动的速度系数
+			}
+			this.initialW = 470;//基准宽度
+			this.initialH = 410; //基准高度
+			this.initialW*.3;//绘制大小  this.width=
+			this.initialH*.3;//          this.height=
+			this.targetScale = Math.random()*.15+.02;//最小值为0.02
+			//初始化的时候大小缩放比例scale
+			this.scale = this.targetScale*Math.random();
+		}
+		Heart.prototype.update = function(){
+			this.x += this.vel.x;//改变心的x方向位置 10 10.5
+			this.y += this.vel.y;
+			/*if(this.scale<this.targetScale){
+				this.scale += 0.01;//慢慢放大 增加系数
+			}*/
+			if(this.x-this.width > wW || this.x + this.widht < 0){
+				this.scale = 0;//重置缩放值
+				this.x = Math.random()*wW;
+			}
+			if(this.y-this.height > wH || this.y + this.height < 0){
+				this.scale =0;
+				this.y = Math.random()*wH;
+			}
+			this.scale +=(this.targetScale-this.scale)*.01;
+			//当前大小 = 目标大小 - 当前大小
+			//0.3     =       0.8 - 0.3 ） * 0.01
+			//this.scale += (this.targetScale-this.scale)*.1;
+			this.width = this.scale*this.initialW;
+			this.height = this.scale*this.initialH;
+			//console.log();
+		}
+		Heart.prototype.draw = function(){ //绘制方法 原型方法
+			ctx.globalAlpha = this.opacity;//爱心透明度
+			ctx.drawImage(heartImage,this.x,this.y,this.width,this.height);
+		}
+		var nHeart = new Heart(); //实例化对象
+		function render(){//渲染函数
+			ctx.clearRect(0,0,wW,wH);//清空画布
+			for(var i=0;i<num;i++){
+				hearts[i].draw();
+				hearts[i].update();
+			}
+			//nHeart.draw();//对象的绘制方法
+			//nHeart.update();//每隔13毫秒重新绘制爱心坐标
+			requestAnimationFrame(render);//每隔13毫秒调用一次render
+		}
+	</script>
+ </body>
+</html>
+<!--
+/*
+	1,
+		//document.getElementById('box') //只能获取指定的id名称的节点对象，没有长度，唯一
+		//document.gerElementByClassName('box') //只能获取指定的class名称的阶段对象数组，不能直接使用，需要指定下表或者遍历
+		//document.getElementByTagName('div') //只能获取指定标签类别的节点对象数组，不能直接使用，需要指定下标或者遍历
+		//document.querySelectorAll('')  //可以获取id class tag 并且可以像css选择器一样使用，比如#box li 获取#box 下的所有li
+		//document.querySelector('')  //可以获取id class tag 并且像css选择器一样使用 但只能获取第一个 没有长度 唯一
+		*-----
+		h5 最新的选择器 兼容ie8
+			document.querySelecor('.wrap p a') 类似jquery $选择器 $('.wrap p a') css选择器写法一模一样
+			id class tag
+			document.querySelectorAll('')
+        --*
+	2,如何创建图片对象
+	3,初始化
+		canvas画布
+		获取浏览器的宽高度
+		width height
+		ctx.drawImage() 绘制图片 img对象 绘制开始的x坐标
+
+	4,面向对象 创建爱心对象
+		爱心的最终（目标）大小 随机
+		爱心的初始化位置 随机
+		爱心的移动的速度 随机
+		爱心的移动方向 随机
+		爱心的透明度 随机
+
+		爱心的行为
+			随机
+				范围 Math.randow() 0-1 包括0不包括1
+			移动 慢慢变大 超出范围后消失重新定位
+	5,canvas h5 高级绘图
+		JavaScript
+			作用域
+			this 对象 运行环境上下文
+	6,定时器
+		setInteval = bug （回调函数，100）11-12毫秒-I7  13-16毫秒-I5
+		setTimeout 模拟 setInterval
+		requestAnimationFrame h5
+		帧动画 cpu的运行速率来的 无法手动设置时间间隔的
+		流畅的动画
+*/
+
+-->
